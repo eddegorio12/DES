@@ -34,10 +34,11 @@ interface Props {
 }
 
 const { service } = Astro.props;
-const { title, description, pageHeading, overview, scope, benefits, process, industries, cta } = service;
+const { title, description, pageHeading, overview, scope, benefits, process, industries, cta, id } = service;
+const currentPath = `/services/${id}`;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} currentPath={currentPath}>
   <article class="service-page">
     <header class="service-header">
       <nav class="breadcrumb">

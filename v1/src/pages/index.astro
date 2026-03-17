@@ -7,7 +7,7 @@ import homeData from '../content/pages/home.json';
 const { title, description, cta } = homeData;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} currentPath="/">
   <article class="home-page">
     <!-- Hero Section -->
     <section class="hero">
@@ -15,71 +15,164 @@ const { title, description, cta } = homeData;
         <div class="hero-content">
           <h1 class="hero-title">{title}</h1>
           <p class="hero-subtitle">{description}</p>
-          {cta && (
-            <a href={cta.link} class="btn btn-primary btn-lg">
-              {cta.text}
+          <div class="hero-ctas">
+            {cta && (
+              <a href={cta.link} class="btn btn-primary btn-lg">
+                {cta.text}
+              </a>
+            )}
+            <a href="/services" class="btn btn-secondary btn-lg">
+              Explore Services
             </a>
-          )}
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Service Overview Section -->
-    <section class="services-overview">
+    <section class="services-overview section-alt">
       <div class="container">
-        <h2>Our Services</h2>
-        <div class="service-list">
-          <ul class="service-items">
-            <li>Cable Tray Installation</li>
-            <li>Cable Pulling</li>
-            <li>Glanding and Termination</li>
-            <li>Loop Check / Pre-Commissioning</li>
-            <li>Instrument Configuration / Calibration</li>
-            <li>Inspection</li>
-            <li>Operation Support</li>
-            <li>Maintenance</li>
-          </ul>
+        <div class="section-header">
+          <h2>Our Core Services</h2>
+          <p class="section-subtitle">Comprehensive EC&I solutions for industrial and commercial projects</p>
         </div>
-        <a href="/services" class="btn btn-secondary">
-          View All Services
-        </a>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Cable Tray Installation</h3>
+            <p>Professional installation of cable management systems for organized and safe wiring infrastructure.</p>
+            <a href="/services/cable-tray-installation" class="service-link">
+              Learn more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="service-card">
+            <h3>Cable Pulling</h3>
+            <p>Precise cable pulling services with proper tension control and routing for optimal performance.</p>
+            <a href="/services/cable-pulling" class="service-link">
+              Learn more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="service-card">
+            <h3>Glanding and Termination</h3>
+            <p>Expert cable termination and glanding ensuring secure connections and compliance with standards.</p>
+            <a href="/services/glanding-and-termination" class="service-link">
+              Learn more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="service-card">
+            <h3>Loop Check / Pre-Commissioning</h3>
+            <p>Thorough loop checking and pre-commissioning to verify system integrity before operation.</p>
+            <a href="/services/loop-check-pre-commissioning" class="service-link">
+              Learn more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="service-card">
+            <h3>Instrument Configuration</h3>
+            <p>Professional calibration and configuration of instrumentation for accurate measurements.</p>
+            <a href="/services/instrument-configuration-calibration" class="service-link">
+              Learn more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="service-card">
+            <h3>Inspection</h3>
+            <p>Comprehensive inspection services to ensure compliance, safety, and system reliability.</p>
+            <a href="/services/inspection" class="service-link">
+              Learn more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="service-card">
+            <h3>Operation Support</h3>
+            <p>On-demand technical support and operational assistance for EC&I systems.</p>
+            <a href="/services/operation-support" class="service-link">
+              Learn more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="service-card">
+            <h3>Maintenance</h3>
+            <p>Preventive and corrective maintenance services to keep your systems running efficiently.</p>
+            <a href="/services/maintenance" class="service-link">
+              Learn more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+        <div class="services-cta">
+          <a href="/services" class="btn btn-secondary btn-lg">
+            View All Services
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- Why DES Section -->
     <section class="why-des">
       <div class="container">
-        <h2>Why Choose DES</h2>
-        <ul class="benefit-list">
-          <li>Registered engineering services company</li>
-          <li>Experienced team with industrial project expertise</li>
-          <li>Safety-first approach on every site</li>
-          <li>Reliable manpower supply for EC&I works</li>
-          <li>Commitment to quality and on-time delivery</li>
-        </ul>
+        <div class="section-header">
+          <h2>Why Choose DES</h2>
+          <p class="section-subtitle">Experience and expertise you can trust</p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Registered & Certified</h3>
+            <p>Fully licensed engineering services company with proven industry credentials.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 6V12L16 14M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Experienced Team</h3>
+            <p>Skilled engineers and technicians with extensive industrial project expertise.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Safety-First Culture</h3>
+            <p>Strict adherence to safety protocols on every project, protecting everyone on site.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 10V3L4 14H11V21L20 10H13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Responsive Delivery</h3>
+            <p>Flexible resources and rapid response to meet your project timelines.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Trust Signals Section -->
-    <section class="trust-signals">
+    <section class="trust-signals section-alt">
       <div class="container">
-        <h2>Our Track Record</h2>
-        <div class="trust-grid">
-          <div class="trust-item">
-            <h3>Years of Experience</h3>
-            <p>Proven track record across multiple industries</p>
+        <div class="section-header">
+          <h2>Our Track Record</h2>
+          <p class="section-subtitle">Proven capability across diverse industries</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Years Experience</div>
           </div>
-          <div class="trust-item">
-            <h3>Industries Served</h3>
-            <p>Industrial, commercial, infrastructure, utilities</p>
+          <div class="stat-card">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Projects Completed</div>
           </div>
-          <div class="trust-item">
-            <h3>Safety Commitment</h3>
-            <p>Strict adherence to site safety protocols</p>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Safety Commitment</div>
           </div>
-          <div class="trust-item">
-            <h3>Project Ready</h3>
-            <p>Responsive team available for your project needs</p>
+          <div class="stat-card">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Support Available</div>
           </div>
         </div>
       </div>
@@ -88,8 +181,8 @@ const { title, description, cta } = homeData;
     <!-- CTA Section -->
     <CTABlock 
       title="Ready to start your project?" 
-      description="Contact us today to discuss your EC&I service needs."
-      buttonText="Request a Quote"
+      description="Let us help you achieve your EC&I project goals with our professional services."
+      buttonText="Discuss Your Project"
       buttonLink="/contact" 
     />
   </article>
@@ -98,128 +191,432 @@ const { title, description, cta } = homeData;
 <style>
   /* Hero Section */
   .hero {
-    background-color: var(--color-background-alt);
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-3xl) 0;
+    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-alt) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e6f0ff' fill-opacity='0.2'%3E%3Cpath d='M36 36c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-14c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4zM24 36c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-14c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4zM12 36c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-14c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
   }
 
   .hero-content {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    text-align: center;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-title {
-    font-size: var(--font-size-h1);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1.1;
     margin-bottom: var(--spacing-lg);
+    font-weight: var(--font-weight-black);
     color: var(--color-text);
+    letter-spacing: -0.03em;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 0.5s forwards;
   }
 
   .hero-subtitle {
-    font-size: var(--font-size-lg);
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
     color: var(--color-text-light);
     margin-bottom: var(--spacing-xl);
-    line-height: var(--line-height-base);
-  }
-
-  /* Services Overview */
-  .services-overview {
-    padding: var(--spacing-2xl) 0;
-  }
-
-  .services-overview h2 {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .service-list {
-    max-width: 600px;
-    margin: 0 auto var(--spacing-xl);
-  }
-
-  .service-items {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-md);
-  }
-
-  .service-items li {
-    padding: var(--spacing-md);
-    background-color: var(--color-background-alt);
-    border-radius: 4px;
-    text-align: center;
-  }
-
-  /* Why DES */
-  .why-des {
-    padding: var(--spacing-2xl) 0;
-    background-color: var(--color-background-alt);
-  }
-
-  .why-des h2 {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .benefit-list {
-    list-style: none;
-    padding: 0;
     max-width: 700px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 0.8s forwards;
   }
 
-  .benefit-list li {
-    padding: var(--spacing-md) 0;
-    padding-left: var(--spacing-xl);
-    position: relative;
-    border-bottom: 1px solid var(--color-border);
+  .hero-ctas {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 1.1s forwards;
   }
 
-  .benefit-list li:before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
-    font-weight: bold;
-  }
-
-  /* Trust Signals */
-  .trust-signals {
-    padding: var(--spacing-2xl) 0;
-  }
-
-  .trust-signals h2 {
+  /* Section Headers */
+  .section-header {
     text-align: center;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
   }
 
-  .trust-grid {
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin-bottom: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  }
+
+  .service-card {
+    background: var(--color-background-card);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 102, 204, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .service-card:hover::before {
+    opacity: 1;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+
+  .service-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+    transition: color var(--transition-fast);
+  }
+
+  .service-card p {
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    margin-top: auto;
+  }
+
+  .service-link:hover {
+    text-decoration: underline;
+    gap: 0.75rem;
+    transform: translateX(4px);
+  }
+
+  .services-cta {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  }
+
+  /* Why DES Section */
+  .why-des {
+    padding: var(--spacing-3xl) 0;
+    background: var(--color-background-alt);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-des::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f8fafc' fill-opacity='0.2'%3E%3Cpath d='M36 36c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-14c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4zM24 36c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-14c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4zM12 36c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-14c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+  }
+
+  .benefits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
   }
 
-  .trust-item {
+  .benefit-card {
     text-align: center;
     padding: var(--spacing-lg);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
+    background: var(--color-background-card);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
   }
 
-  .trust-item h3 {
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto var(--spacing-md);
+    background: var(--color-primary-light);
     color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+  }
+
+  .benefit-card:hover .benefit-icon {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-md);
+  }
+
+  .benefit-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+    transition: color var(--transition-fast);
+  }
+
+  .benefit-card:hover h3 {
+    color: var(--color-primary);
+  }
+
+  .benefit-card p {
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  /* Trust Signals / Stats */
+  .trust-signals {
+    padding: var(--spacing-3xl) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .trust-signals::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+    opacity: 0.05;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+    max-width: 900px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out 0.8s forwards;
+  }
+
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-background-alt);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border-light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+    transition: left 0.6s ease-out;
+  }
+
+  .stat-card:hover::before {
+    left: 100%;
+  }
+
+  .stat-number {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: var(--font-weight-black);
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: var(--spacing-sm);
+    transition: color var(--transition-fast);
+  }
+
+  .stat-card:hover .stat-number {
+    color: var(--color-primary-dark);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   /* Responsive */
   @media (max-width: 768px) {
-    .hero-title {
-      font-size: var(--font-size-h2);
+    .hero {
+      padding: var(--spacing-2xl) 0;
     }
 
-    .hero-subtitle {
-      font-size: var(--font-size-base);
+    .hero-ctas .btn {
+      width: 100%;
+      justify-content: center;
     }
+
+    .section-header {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .services-grid {
+      gap: var(--spacing-md);
+    }
+
+    .benefits-grid {
+      gap: var(--spacing-md);
+    }
+
+    .trust-signals {
+      padding: var(--spacing-2xl) 0;
+    }
+  }
+
+  /* Animated Scroll Sections */
+  .animate-fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 1s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInRight 1s ease-out forwards;
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    transition: all var(--transition-base);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hover-glow {
+    transition: all var(--transition-base);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(0, 102, 204, 0.3);
+    transform: scale(1.02);
+  }
+
+  /* Modern Button Effects */
+  .btn {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left var(--transition-base);
+  }
+
+  .btn:hover::before {
+    left: 100%;
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.2);
   }
 </style>

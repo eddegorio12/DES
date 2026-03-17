@@ -22,6 +22,99 @@ Key Architectural Files:
 - `src/layouts/BaseLayout.astro` - Standard page wrapper with header/footer
 - `src/content/config.ts` - Content collection schemas and validation
 - `src/functions/contact.ts` - Serverless form handler (Resend + Turnstile)
+
+## File Explanations
+
+### Core Application Files
+
+#### `astro.config.mjs`
+Astro configuration file that defines:
+- Content collections schema and validation
+- Build settings and output configuration
+- Integration with plugins (if any)
+- Markdown extensions and options
+
+#### `package.json`
+Project metadata and dependencies including:
+- Astro framework and core dependencies
+- Development tools (TypeScript, ESLint, etc.)
+- Build scripts (`dev`, `build`, `preview`)
+- Version information and repository details
+
+#### `tsconfig.json`
+TypeScript configuration for type safety:
+- Target JavaScript version (ES2020)
+- Module resolution settings
+- Path mapping for imports
+- Type checking strictness level
+
+### Source Directory Structure
+
+#### `src/pages/`
+Route-based page components that map to URLs:
+- `index.astro` - Home page with hero, services overview, trust signals
+- `about.astro` - About page with company information and mission
+- `services/index.astro` - Services listing with all service summaries
+- `services/[slug].astro` - Dynamic service detail pages using getStaticPaths()
+- `contact.astro` - Contact page with form and company information
+- `404.astro` - Not found page with navigation back to main content
+
+#### `src/components/`
+Reusable UI components:
+- `Header.astro` - Global header with navigation and contact CTA
+- `Footer.astro` - Global footer with company info and links
+- `CTABlock.astro` - Reusable call-to-action block component
+- (Future components can be added here for reusability)
+
+#### `src/layouts/`
+Page layout wrappers:
+- `BaseLayout.astro` - Standard page wrapper with metadata, header, footer
+- Provides consistent structure across all pages
+- Handles SEO metadata and common page elements
+
+#### `src/content/`
+Content storage and data management:
+- `pages/` - JSON files for Home, About, Contact page content
+- `services/` - JSON files for all 8 service pages + manifest.json
+- `data.ts` - Shared data lookup module for services
+- Content is editable without code changes
+
+#### `src/functions/`
+Serverless functions for dynamic features:
+- `api/contact.ts` - Contact form endpoint with validation and email delivery
+- Handles POST requests, Turnstile verification, Resend integration
+- Returns success/error responses to client
+
+#### `src/styles/`
+Global styling system:
+- `global.css` - Comprehensive design system with CSS custom properties
+- Includes typography, colors, spacing, responsive breakpoints
+- Component-specific styles and utility classes
+
+#### `src/scripts/`
+Client-side JavaScript utilities:
+- Form validation logic
+- Interactive features (if added)
+- Analytics and tracking (if implemented)
+
+### Public Directory
+
+#### `public/`
+Static assets served directly:
+- `favicon.ico` - Site favicon
+- `robots.txt` - Search engine crawler instructions
+- `sitemap.xml` - XML sitemap for SEO
+- Images and other static media
+- No processing by Astro build system
+
+### Build Output
+
+#### `dist/`
+Production build output containing:
+- Static HTML files for all pages
+- Optimized CSS and JavaScript bundles
+- Processed images and assets
+- Ready for deployment to CDN or hosting service
 ```
 
 ## Site Map (v1)

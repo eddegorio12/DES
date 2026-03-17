@@ -7,10 +7,10 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
-  // Any additional page-specific props can be added here
+  currentPath?: string;
 }
 
-const { title, description = 'DES Engineering Services - Professional EC&I Services and Manpower Supply in Hong Kong' } = Astro.props;
+const { title, description = 'DES Engineering Services - Professional EC&I Services and Manpower Supply in Hong Kong', currentPath = '/' } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,7 +24,7 @@ const { title, description = 'DES Engineering Services - Professional EC&I Servi
     <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <Header />
+    <Header currentPath={currentPath} />
     <main id="main-content" class="main-content">
       <div class="container">
         <slot /> {/* Page-specific content injected here */}

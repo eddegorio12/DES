@@ -1,5 +1,5 @@
 ---
-// Footer.astro - Global site footer with company info, links, and contact details
+// Footer.astro - Modern site footer
 ---
 
 <footer class="site-footer">
@@ -7,25 +7,30 @@
     <div class="footer-grid">
       <!-- Company Info -->
       <div class="footer-section footer-about">
-        <h3 class="footer-title">DES Engineering Services</h3>
-        <p class="footer-description">
-          Professional EC&I engineering services and manpower supply for industrial and commercial projects in Hong Kong.
-        </p>
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="currentColor"/>
+              <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>DES Engineering</span>
+          </div>
+          <p class="footer-description">
+            Professional EC&I engineering services and skilled manpower supply for industrial and commercial projects across Hong Kong.
+          </p>
+        </div>
         <ul class="contact-list">
           <li>
-            <strong>Phone:</strong>
-            <a href="tel:+852XXXXXXXX" class="footer-link">+852 XXXX XXXX</a>
+            <span class="contact-label">Phone:</span>
+            <a href="tel:+85212345678" class="footer-link">+852 1234 5678</a>
           </li>
           <li>
-            <strong>Email:</strong>
-            <a href="mailto:info@des-eng.com" class="footer-link">info@des-eng.com</a>
+            <span class="contact-label">Email:</span>
+            <a href="mailto:info@des-engineering.com" class="footer-link">info@des-engineering.com</a>
           </li>
           <li>
-            <strong>Address:</strong>
-            <address class="footer-address">
-              Hong Kong SAR<br>
-              (Full address to be added)
-            </address>
+            <span class="contact-label">Location:</span>
+            <address class="footer-address">Hong Kong SAR</address>
           </li>
         </ul>
       </div>
@@ -57,30 +62,37 @@
 
       <!-- CTA Section -->
       <div class="footer-section footer-cta">
-        <h4 class="footer-heading">Need a Quote?</h4>
+        <h4 class="footer-heading">Start Your Project</h4>
         <p class="footer-cta-text">
-          Contact us today to discuss your project requirements.
+          Ready to discuss your EC&I needs? Contact us for a consultation.
         </p>
         <a href="/contact" class="btn btn-primary">
-          Request a Quote
+          Get a Quote
         </a>
       </div>
     </div>
 
     <!-- Bottom Bar -->
     <div class="footer-bottom">
-      <p class="copyright">
-        &copy; {new Date().getFullYear()} DES Engineering Services and Manpower Supply Limited. All rights reserved.
-      </p>
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          &copy; {new Date().getFullYear()} DES Engineering Services and Manpower Supply Limited. All rights reserved.
+        </p>
+        <div class="footer-legal">
+          <a href="/privacy" class="footer-legal-link">Privacy</a>
+          <span class="separator">·</span>
+          <a href="/terms" class="footer-legal-link">Terms</a>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    background-color: var(--color-background-alt);
-    border-top: 1px solid var(--color-border);
-    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+    background: linear-gradient(180deg, var(--color-background-alt) 0%, var(--color-background) 100%);
+    border-top: 1px solid var(--color-border-light);
+    padding: var(--spacing-3xl) 0 var(--spacing-lg);
     margin-top: auto;
   }
 
@@ -88,31 +100,59 @@
     display: grid;
     gap: var(--spacing-xl);
     grid-template-columns: 1fr;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
   }
 
   @media (min-width: 768px) {
     .footer-grid {
       grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: var(--spacing-2xl);
     }
   }
 
-  .footer-title {
-    font-size: 1.25rem;
+  .footer-brand {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
     color: var(--color-primary);
   }
 
-  .footer-heading {
-    font-size: 1rem;
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text);
+  .footer-logo span {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-black);
+    letter-spacing: -0.02em;
+  }
+
+  .footer-logo svg {
+    width: 28px;
+    height: 28px;
   }
 
   .footer-description {
     color: var(--color-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .footer-title {
+    font-size: 1.125rem;
     margin-bottom: var(--spacing-md);
-    line-height: var(--line-height-base);
+    color: var(--color-text);
+  }
+
+  .footer-heading {
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
   }
 
   .contact-list {
@@ -122,8 +162,19 @@
   }
 
   .contact-list li {
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text-light);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9375rem;
+  }
+
+  .contact-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-lighter);
+    font-weight: var(--font-weight-medium);
   }
 
   .footer-address {
@@ -139,34 +190,96 @@
   }
 
   .footer-nav li {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .footer-nav li:last-child {
+    margin-bottom: 0;
   }
 
   .footer-link {
     color: var(--color-text-light);
     text-decoration: none;
-    transition: color var(--transition-fast);
+    transition: all var(--transition-fast);
+    font-size: 0.9375rem;
+    display: inline-block;
+    position: relative;
   }
 
   .footer-link:hover {
     color: var(--color-primary);
-    text-decoration: underline;
+    text-decoration: none;
+    transform: translateX(4px);
   }
 
   .footer-cta-text {
     color: var(--color-text-light);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.9375rem;
+    line-height: 1.6;
   }
 
   .footer-bottom {
     padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--color-border);
-    text-align: center;
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
   }
 
   .copyright {
-    color: var(--color-text-light);
+    color: var(--color-text-lighter);
     font-size: 0.875rem;
     margin: 0;
+  }
+
+  .footer-legal {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .footer-legal-link {
+    color: var(--color-text-lighter);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-legal-link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .separator {
+    color: var(--color-border);
+  }
+
+  @media (max-width: 768px) {
+    .site-footer {
+      padding: var(--spacing-2xl) 0 var(--spacing-md);
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+
+    .footer-bottom-content {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--spacing-md);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-logo span {
+      font-size: 1.125rem;
+    }
   }
 </style>

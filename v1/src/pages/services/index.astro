@@ -1,38 +1,193 @@
 ---
 // Services index page - lists all services from manifest
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABlock from '../../components/CTABlock.astro';
 import manifest from '../../content/services/manifest.json';
 
 const { title, description, services } = manifest;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} currentPath="/services">
   <article class="services-page">
-    <header class="page-header">
-      <h1>{title}</h1>
-      <p class="subtitle">{description}</p>
+    <header class="page-hero">
+      <div class="container">
+        <h1>{title}</h1>
+        <p class="page-subtitle">{description}</p>
+      </div>
     </header>
 
     <div class="container">
-      <section class="services-intro">
+      <section class="services-intro section-alt">
         <p>DES provides professional electrical, control, and instrumentation services to industrial and commercial clients in Hong Kong. Our experienced team delivers reliable solutions from installation through commissioning and ongoing maintenance.</p>
       </section>
 
       <section class="services-grid">
         {services.map((service) => (
-          <div class="service-card">
-            <h3><a href={`/services/${service.id}`}>{service.title}</a></h3>
+          <div class="service-card card">
+            <div class="service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>{service.title}</h3>
             <p>{service.description}</p>
-            <a href={`/services/${service.id}`} class="btn btn-secondary btn-sm">
-              Learn More
+            <a href={`/services/${service.id}`} class="service-link">
+              Learn more about {service.title.split(' ')[0]} <span aria-hidden="true">→</span>
             </a>
           </div>
         ))}
       </section>
+
+      <section class="contact-prompt section-alt">
+        <div class="prompt-content">
+          <h2>Need a specific service?</h2>
+          <p>Not sure which service fits your needs? Our team can help identify the right solution for your project.</p>
+          <a href="/contact" class="btn btn-primary btn-lg">
+            Talk to an Expert
+          </a>
+        </div>
+      </section>
     </div>
+
+    <CTABlock 
+      title="Ready to start your project?" 
+      description="Get a free consultation and quote for your EC&I requirements."
+      buttonText="Request a Quote"
+      buttonLink="/contact" 
+    />
   </article>
 </BaseLayout>
 
 <style>
-  /* ... existing styles remain the same ... */
+  .page-hero {
+    background: linear-gradient(180deg, var(--color-background-alt) 0%, var(--color-background) 100%);
+    padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: -0.03em;
+  }
+
+  .page-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .services-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-2xl);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+  }
+
+  .services-intro p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .service-card {
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    height: 100%;
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+  }
+
+  .service-card p {
+    color: var(--color-text-light);
+    flex-grow: 1;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .service-link:hover {
+    gap: 0.75rem;
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+
+  .contact-prompt {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    border-radius: var(--border-radius-xl);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .prompt-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .prompt-content h2 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .prompt-content p {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: var(--spacing-xl) 0;
+    }
+
+    .services-grid {
+      gap: var(--spacing-lg);
+    }
+
+    .service-card {
+      padding: var(--spacing-lg);
+    }
+
+    .contact-prompt {
+      padding: var(--spacing-lg);
+    }
+
+    .prompt-content h2 {
+      font-size: var(--font-size-h3);
+    }
+  }
 </style>

@@ -7,7 +7,7 @@ import contactData from '../content/pages/contact.json';
 const { title, description, cta } = contactData;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} currentPath="/contact">
   <article class="contact-page">
     <header class="page-header">
       <h1>{title}</h1>
@@ -122,221 +122,136 @@ const { title, description, cta } = contactData;
             ></textarea>
           </div>
 
-          <!-- Cloudflare Turnstile will be added here later -->
-          <div class="form-group">
-            <div id="turnstile-widget"></div>
-          </div>
+           <!-- Cloudflare Turnstile -->
+           <div class="form-group">
+             <div id="turnstile-widget"></div>
+           </div>
 
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary btn-lg">
-              Send Request
-            </button>
-            <span class="form-note">* Required fields</span>
-          </div>
+           <div class="form-actions">
+             <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">
+               <span class="btn-text">Send Request</span>
+               <span class="btn-loading" style="display: none;">Sending...</span>
+             </button>
+             <span class="form-note">* Required fields</span>
+           </div>
 
-          <div id="form-status" class="form-status" role="alert"></div>
-        </form>
-      </section>
-    </div>
+           <div id="form-status" class="form-status" role="alert"></div>
+         </form>
+       </section>
+     </div>
 
-    <CTABlock 
-      title="Need immediate assistance?" 
-      description="Call us directly or reach out on WhatsApp for quick responses."
-      buttonText="Call Now"
-      buttonLink="tel:+85212345678" 
-    />
-  </article>
-</BaseLayout>
+     <CTABlock 
+       title="Need immediate assistance?" 
+       description="Call us directly or reach out on WhatsApp for quick responses."
+       buttonText="Call Now"
+       buttonLink="tel:+85212345678" 
+     />
+   </article>
+ </BaseLayout>
 
-<style>
-  .page-header {
-    background-color: var(--color-background-alt);
-    padding: var(--spacing-2xl) 0;
-    text-align: center;
-  }
+ <script>
+   // Load Turnstile script
+   const turnstileScript = document.createElement('script');
+   turnstileScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+   turnstileScript.async = true;
+   turnstileScript.defer = true;
+   document.head.appendChild(turnstileScript);
 
-  .page-header h1 {
-    margin: 0 0 var(--spacing-md);
-  }
+   turnstileScript.onload = () => {
+     if (window.turnstile) {
+       window.turnstile.render('#turnstile-widget', {
+         sitekey: '0x4AAAAAAAoA2rbuEcDQP1mt', // Replace with actual sitekey from Cloudflare
+         callback: function(token) {
+           console.log('Turnstile token received:', token);
+         },
+         'error-callback': function() {
+           console.error('Turnstile error occurred');
+           showFormError('CAPTCHA verification failed. Please try again.');
+         }
+       });
+     }
+   };
 
-  .subtitle {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-light);
-    margin: 0;
-  }
+   document.addEventListener('DOMContentLoaded', () => {
+     const form = document.getElementById('contact-form');
+     const status = document.getElementById('form-status');
+     const submitBtn = document.getElementById('submit-btn');
+     const btnText = submitBtn?.querySelector('.btn-text');
+     const btnLoading = submitBtn?.querySelector('.btn-loading');
 
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-2xl);
-    margin-top: var(--spacing-2xl);
-  }
+     if (form) {
+       let isSubmitting = false;
 
-  @media (min-width: 768px) {
-    .contact-grid {
-      grid-template-columns: 1fr 1.5fr;
-    }
-  }
+       form.addEventListener('submit', async (e) => {
+         e.preventDefault();
 
-  .contact-info h2, .contact-form-section h2 {
-    margin-top: 0;
-  }
+         if (isSubmitting) return;
+         isSubmitting = true;
 
-  .intro {
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-xl);
-  }
+         // Show loading state
+         if (submitBtn) {
+           submitBtn.disabled = true;
+           if (btnText) btnText.style.display = 'none';
+           if (btnLoading) btnLoading.style.display = 'inline';
+         }
 
-  .contact-methods {
-    margin-bottom: var(--spacing-xl);
-  }
+         // Get Turnstile token
+         const turnstileToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
 
-  .contact-item {
-    margin-bottom: var(--spacing-lg);
-    padding: var(--spacing-md);
-    background-color: var(--color-background-alt);
-    border-radius: 4px;
-  }
+         const formData = new FormData(form);
+         const data = Object.fromEntries(formData.entries());
+         data.turnstile_token = turnstileToken;
 
-  .contact-item h3 {
-    margin: 0 0 var(--spacing-sm);
-    font-size: var(--font-size-h5);
-    color: var(--color-primary);
-  }
+         try {
+           const response = await fetch('/api/contact', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+             },
+             body: JSON.stringify(data),
+           });
 
-  .contact-item p, .contact-item a {
-    margin: 0;
-    color: var(--color-text);
-  }
+           const result = await response.json();
 
-  .response-time {
-    padding: var(--spacing-md);
-    background-color: var(--color-success-light, #e8f5e9);
-    border-radius: 4px;
-    border-left: 4px solid var(--color-success, #4caf50);
-  }
+           if (response.ok && result.success) {
+             showFormSuccess('Thank you! Your message has been sent. We will reply within 1 business day.');
+             form.reset();
+             // Reset Turnstile
+             if (window.turnstile) {
+               window.turnstile.reset();
+             }
+           } else {
+             const errorMsg = result.error || 'Failed to send message. Please try again or contact us directly.';
+             showFormError(errorMsg);
+           }
+         } catch (error) {
+           console.error('Form submission error:', error);
+           showFormError('Network error occurred. Please check your connection and try again.');
+         } finally {
+           isSubmitting = false;
+           if (submitBtn) {
+             submitBtn.disabled = false;
+             if (btnText) btnText.style.display = 'inline';
+             if (btnLoading) btnLoading.style.display = 'none';
+           }
+         }
+       });
+     }
 
-  .contact-form {
-    background-color: var(--color-background-alt);
-    padding: var(--spacing-xl);
-    border-radius: 4px;
-  }
+     function showFormSuccess(message) {
+       if (status) {
+         status.textContent = message;
+         status.className = 'form-status success';
+         status.style.display = 'block';
+       }
+     }
 
-  .form-group {
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .form-group label {
-    display: block;
-    margin-bottom: var(--spacing-sm);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text);
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: var(--spacing-md);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    font-size: var(--font-size-base);
-    font-family: inherit;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
-  }
-
-  .form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-
-  .form-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-xl);
-  }
-
-  .form-note {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-light);
-  }
-
-  .form-status {
-    margin-top: var(--spacing-md);
-    padding: var(--spacing-md);
-    border-radius: 4px;
-    display: none;
-  }
-
-  .form-status.success {
-    display: block;
-    background-color: var(--color-success-light, #e8f5e9);
-    color: var(--color-success, #2e7d32);
-    border: 1px solid var(--color-success, #4caf50);
-  }
-
-  .form-status.error {
-    display: block;
-    background-color: var(--color-error-light, #ffebee);
-    color: var(--color-error, #c62828);
-    border: 1px solid var(--color-error, #f44336);
-  }
-
-  /* Button sizes */
-  .btn-sm {
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: var(--font-size-sm);
-  }
-
-  @media (max-width: 768px) {
-    .contact-grid {
-      margin-top: var(--spacing-xl);
-    }
-
-    .form-actions {
-      align-items: stretch;
-    }
-
-    .btn {
-      width: 100%;
-      text-align: center;
-    }
-  }
-</style>
-
-<script>
-  // Simple client-side form handling (will be enhanced with Turnstile and fetch)
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-
-    if (form) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        // For now, just show success (will connect to serverless function later)
-        status.textContent = 'Form submission would work here (serverless function not yet implemented)';
-        status.className = 'form-status success';
-
-        // Reset after 5 seconds
-        setTimeout(() => {
-          status.style.display = 'none';
-          form.reset();
-        }, 5000);
-      });
-    }
-  });
-</script>
+     function showFormError(message) {
+       if (status) {
+         status.textContent = message;
+         status.className = 'form-status error';
+         status.style.display = 'block';
+       }
+     }
+   });
+ </script>
