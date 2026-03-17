@@ -1,0 +1,39 @@
+{
+  "title": "Cable Tray Installation",
+  "description": "Professional cable tray installation services for industrial and commercial projects in Hong Kong.",
+  "pageHeading": "Cable Tray Installation",
+  "overview": "DES provides professional cable tray installation services for electrical and instrumentation systems. Our team ensures proper installation, alignment, and support for all types of cable management systems.",
+  "scope": [
+    "Design verification and tray routing",
+    "Installation of ladder, channel, and solid-bottom trays",
+    "Proper support and suspension systems",
+    "Grounding and bonding",
+    "Compliance with electrical codes and standards",
+    "Coordination with other trades"
+  ],
+  "benefits": [
+    "Organized cable management system",
+    "Enhanced safety with proper support and protection",
+    "Easier future maintenance and additions",
+    "Optimized space utilization",
+    "Compliance with regulatory requirements"
+  ],
+  "process": [
+    "Review drawings and specifications",
+    "Site survey and measurement",
+    "Material procurement and staging",
+    "Installation and alignment",
+    "Inspection and handover"
+  ],
+  "industries": [
+    "Industrial facilities",
+    "Commercial buildings",
+    "Data centers",
+    "Infrastructure projects"
+  ],
+  "cta": {
+    "text": "Request a Quote",
+    "link": "/contact",
+    "description": "Tell us about your cable tray installation needs"
+  }
+}

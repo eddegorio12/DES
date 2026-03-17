@@ -1,0 +1,40 @@
+{
+  "title": "Loop Check and Pre-Commissioning",
+  "description": "Comprehensive loop check and pre-commissioning services for electrical and instrumentation systems in Hong Kong.",
+  "pageHeading": "Loop Check / Pre-Commissioning",
+  "overview": "DES provides thorough loop check and pre-commissioning services to ensure your electrical and instrumentation systems are ready for operation. We verify all connections, calibrations, and functionality before energization.",
+  "scope": [
+    "Continuity and insulation testing",
+    "Loop testing of power and control circuits",
+    "Instrument calibration verification",
+    "Functional testing of control systems",
+    "Protection system testing",
+    "Documentation and punch list"
+  ],
+  "benefits": [
+    "Identify issues before startup",
+    "Ensure system reliability",
+    "Reduce commissioning time",
+    "Compliance with industry standards",
+    "Complete test documentation"
+  ],
+  "process": [
+    "Review loop diagrams and procedures",
+    "Prepare test equipment and documentation",
+    "Execute loop checks and tests",
+    "Record results and track punch items",
+    "Support corrective actions and re-testing"
+  ],
+  "industries": [
+    "Oil and gas",
+    "Chemical and petrochemical",
+    "Power generation",
+    "Water and wastewater",
+    "Manufacturing"
+  ],
+  "cta": {
+    "text": "Request a Quote",
+    "link": "/contact",
+    "description": "Tell us about your pre-commissioning needs"
+  }
+}

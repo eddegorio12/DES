@@ -1,0 +1,225 @@
+---
+// Home page - fetches content from JSON file
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABlock from '../components/CTABlock.astro';
+import homeData from '../content/pages/home.json';
+
+const { title, description, cta } = homeData;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="home-page">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">{title}</h1>
+          <p class="hero-subtitle">{description}</p>
+          {cta && (
+            <a href={cta.link} class="btn btn-primary btn-lg">
+              {cta.text}
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Overview Section -->
+    <section class="services-overview">
+      <div class="container">
+        <h2>Our Services</h2>
+        <div class="service-list">
+          <ul class="service-items">
+            <li>Cable Tray Installation</li>
+            <li>Cable Pulling</li>
+            <li>Glanding and Termination</li>
+            <li>Loop Check / Pre-Commissioning</li>
+            <li>Instrument Configuration / Calibration</li>
+            <li>Inspection</li>
+            <li>Operation Support</li>
+            <li>Maintenance</li>
+          </ul>
+        </div>
+        <a href="/services" class="btn btn-secondary">
+          View All Services
+        </a>
+      </div>
+    </section>
+
+    <!-- Why DES Section -->
+    <section class="why-des">
+      <div class="container">
+        <h2>Why Choose DES</h2>
+        <ul class="benefit-list">
+          <li>Registered engineering services company</li>
+          <li>Experienced team with industrial project expertise</li>
+          <li>Safety-first approach on every site</li>
+          <li>Reliable manpower supply for EC&I works</li>
+          <li>Commitment to quality and on-time delivery</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Trust Signals Section -->
+    <section class="trust-signals">
+      <div class="container">
+        <h2>Our Track Record</h2>
+        <div class="trust-grid">
+          <div class="trust-item">
+            <h3>Years of Experience</h3>
+            <p>Proven track record across multiple industries</p>
+          </div>
+          <div class="trust-item">
+            <h3>Industries Served</h3>
+            <p>Industrial, commercial, infrastructure, utilities</p>
+          </div>
+          <div class="trust-item">
+            <h3>Safety Commitment</h3>
+            <p>Strict adherence to site safety protocols</p>
+          </div>
+          <div class="trust-item">
+            <h3>Project Ready</h3>
+            <p>Responsive team available for your project needs</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <CTABlock 
+      title="Ready to start your project?" 
+      description="Contact us today to discuss your EC&I service needs."
+      buttonText="Request a Quote"
+      buttonLink="/contact" 
+    />
+  </article>
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    background-color: var(--color-background-alt);
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: var(--font-size-h1);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xl);
+    line-height: var(--line-height-base);
+  }
+
+  /* Services Overview */
+  .services-overview {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .services-overview h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .service-list {
+    max-width: 600px;
+    margin: 0 auto var(--spacing-xl);
+  }
+
+  .service-items {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .service-items li {
+    padding: var(--spacing-md);
+    background-color: var(--color-background-alt);
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  /* Why DES */
+  .why-des {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--color-background-alt);
+  }
+
+  .why-des h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .benefit-list {
+    list-style: none;
+    padding: 0;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .benefit-list li {
+    padding: var(--spacing-md) 0;
+    padding-left: var(--spacing-xl);
+    position: relative;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .benefit-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+  }
+
+  /* Trust Signals */
+  .trust-signals {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .trust-signals h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .trust-item {
+    text-align: center;
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .trust-item h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: var(--font-size-h2);
+    }
+
+    .hero-subtitle {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

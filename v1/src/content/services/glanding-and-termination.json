@@ -1,0 +1,39 @@
+{
+  "title": "Glanding and Termination",
+  "description": "Professional cable glanding and termination services for power and instrumentation cables in Hong Kong.",
+  "pageHeading": "Glanding and Termination",
+  "overview": "DES provides expert cable glanding and termination services for both power and instrumentation cables. Our technicians ensure proper connections that meet industry standards and ensure long-term reliability.",
+  "scope": [
+    "Cable gland selection and installation",
+    "Power cable termination (high and low voltage)",
+    "Instrumentation cable termination",
+    "Sealing and grounding",
+    "Testing of terminations",
+    "Documentation and labeling"
+  ],
+  "benefits": [
+    "Reliable electrical connections",
+    "Protection against environmental factors",
+    "Compliance with electrical codes",
+    "Reduced risk of faults or failures",
+    "Proper labeling for maintenance"
+  ],
+  "process": [
+    "Review cable and terminal specifications",
+    "Select appropriate glands and connectors",
+    "Prepare cable ends and install glands",
+    "Execute terminations with proper torque",
+    "Test connections and document"
+  ],
+  "industries": [
+    "Oil and gas",
+    "Manufacturing",
+    "Utilities",
+    "Process industries"
+  ],
+  "cta": {
+    "text": "Request a Quote",
+    "link": "/contact",
+    "description": "Tell us about your glanding and termination needs"
+  }
+}

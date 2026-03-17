@@ -1,0 +1,74 @@
+---
+// CTABlock.astro - Reusable call-to-action block
+interface Props {
+  title?: string;
+  description?: string;
+  buttonText: string;
+  buttonLink: string;
+}
+
+const { title = 'Ready to get started?', description = 'Contact us today to discuss your project requirements.', buttonText, buttonLink } = Astro.props;
+---
+
+<section class="cta-block">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="cta-title">{title}</h2>
+      <p class="cta-description">{description}</p>
+      <a href={buttonLink} class="btn btn-primary btn-lg">
+        {buttonText}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-block {
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--spacing-2xl) 0;
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--spacing-md);
+    color: white;
+  }
+
+  .cta-description {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.9;
+    line-height: var(--line-height-base);
+  }
+
+  .cta-block :global(.btn-primary) {
+    background-color: white;
+    color: var(--color-primary);
+  }
+
+  .cta-block :global(.btn-primary:hover) {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .cta-block {
+      padding: var(--spacing-xl) 0;
+    }
+
+    .cta-title {
+      font-size: var(--font-size-h3);
+    }
+
+    .cta-description {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

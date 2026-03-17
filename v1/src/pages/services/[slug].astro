@@ -1,0 +1,118 @@
+---
+// Service detail page - dynamic route for individual services
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABlock from '../../components/CTABlock.astro';
+import { servicesMap, allServiceSlugs } from '../../content/services/data.ts';
+
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  pageHeading: string;
+  overview: string;
+  scope: string[];
+  benefits: string[];
+  process?: string[];
+  industries?: string[];
+  cta: {
+    text: string;
+    link: string;
+    description?: string;
+  };
+}
+
+// Generate static paths for all services at build time
+export async function getStaticPaths() {
+  return allServiceSlugs.map((slug) => ({
+    params: { slug },
+    props: { service: servicesMap[slug] },
+  }));
+}
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+const { title, description, pageHeading, overview, scope, benefits, process, industries, cta } = service;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="service-page">
+    <header class="service-header">
+      <nav class="breadcrumb">
+        <a href="/services">Services</a> / <span>{pageHeading}</span>
+      </nav>
+      <h1>{pageHeading}</h1>
+      <p class="service-intro">{overview}</p>
+      {cta && (
+        <a href={cta.link || '/contact'} class="btn btn-primary btn-lg">
+          {cta.text || 'Request a Quote'}
+        </a>
+      )}
+    </header>
+
+    <div class="container">
+      <div class="service-content">
+        <section class="scope-section">
+          <h2>Scope of Work</h2>
+          <ul class="scope-list">
+            {scope.map((item: string, index: number) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="benefits-section">
+          <h2>Benefits</h2>
+          <ul class="benefits-list">
+            {benefits.map((benefit: string) => (
+              <li>{benefit}</li>
+            ))}
+          </ul>
+        </section>
+
+        {process && process.length > 0 && (
+          <section class="process-section">
+            <h2>Our Process</h2>
+            <ol class="process-list">
+              {process.map((step: string, index: number) => (
+                <li>
+                  <span class="step-number">{index + 1}</span>
+                  <span class="step-text">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
+        {industries && industries.length > 0 && (
+          <section class="industries-section">
+            <h2>Industries Served</h2>
+            <ul class="industries-list">
+              {industries.map((industry: string) => (
+                <li>{industry}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {cta && (
+          <section class="cta-section">
+            <div class="cta-box">
+              <h2>Ready to get started?</h2>
+              <p>{cta.description || 'Contact us today to discuss your project requirements.'}</p>
+              <a href={cta.link} class="btn btn-primary btn-lg">
+                {cta.text}
+              </a>
+            </div>
+          </section>
+        )}
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  /* ... existing styles remain unchanged ... */
+</style>

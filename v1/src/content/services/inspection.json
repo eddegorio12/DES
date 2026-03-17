@@ -1,0 +1,39 @@
+{
+  "title": "Inspection",
+  "description": "Comprehensive inspection services for electrical and instrumentation systems in Hong Kong.",
+  "pageHeading": "Inspection",
+  "overview": "DES provides thorough inspection services for electrical and instrumentation installations. We identify issues, assess compliance, and provide actionable recommendations to maintain system integrity and safety.",
+  "scope": [
+    "Electrical system inspections",
+    "Instrumentation system inspections",
+    "Site audits for compliance",
+    "Documentation review",
+    "Safety observation and reporting",
+    "Recommendation reports"
+  ],
+  "benefits": [
+    "Identify potential issues before failures occur",
+    "Ensure regulatory compliance",
+    "Improve safety performance",
+    "Plan maintenance proactively",
+    "Extend equipment life"
+  ],
+  "process": [
+    "Review inspection scope and standards",
+    "Conduct on-site inspection",
+    "Document findings and observations",
+    "Provide detailed inspection report",
+    "Recommend corrective actions"
+  ],
+  "industries": [
+    "Industrial plants",
+    "Commercial facilities",
+    "Infrastructure",
+    "Utilities"
+  ],
+  "cta": {
+    "text": "Request an Inspection",
+    "link": "/contact",
+    "description": "Tell us about your inspection needs"
+  }
+}

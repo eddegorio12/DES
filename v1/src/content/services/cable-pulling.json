@@ -1,0 +1,39 @@
+{
+  "title": "Cable Pulling",
+  "description": "Expert cable pulling services for power, control, and instrumentation cables in Hong Kong.",
+  "pageHeading": "Cable Pulling",
+  "overview": "DES offers professional cable pulling services for all types of power, control, and instrumentation cables. Our experienced technicians use proper techniques and equipment to ensure cables are installed without damage.",
+  "scope": [
+    "Cable pulling planning and tension calculation",
+    "Installation of power and control cables",
+    "Use of proper lubricants and pulling equipment",
+    "Segregation of power and instrumentation cables",
+    "Cable termination preparation",
+    "Testing and documentation"
+  ],
+  "benefits": [
+    "Damage-free cable installation",
+    "Compliance with manufacturer specifications",
+    "Reduced risk of rework",
+    "Proper cable segregation and organization",
+    "Complete documentation for records"
+  ],
+  "process": [
+    "Review cable routing and specifications",
+    "Calculate pull tensions and plan sequence",
+    "Install temporary supports and guides",
+    "Execute pull with proper supervision",
+    "Inspect and test installed cables"
+  ],
+  "industries": [
+    "Industrial plants",
+    "Commercial construction",
+    "Utility projects",
+    "Infrastructure development"
+  ],
+  "cta": {
+    "text": "Request a Quote",
+    "link": "/contact",
+    "description": "Tell us about your cable pulling requirements"
+  }
+}

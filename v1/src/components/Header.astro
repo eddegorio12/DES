@@ -1,0 +1,145 @@
+---
+// Header.astro - Global site header with navigation and CTA
+interface Props {
+  // Optional: current page path for active link highlighting
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Logo / Brand -->
+      <a href="/" class="site-logo" aria-label="DES Engineering Services - Home">
+        <span class="logo-text">DES</span>
+        <span class="logo-tagline">Engineering Services</span>
+      </a>
+
+      <!-- Primary Navigation -->
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/" class:list={['nav-link', currentPath === '/' ? 'active' : '']}>Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="/about" class:list={['nav-link', currentPath === '/about' ? 'active' : '']}>About</a>
+          </li>
+          <li class="nav-item">
+            <a href="/services" class:list={['nav-link', currentPath.startsWith('/services') ? 'active' : '']}>Services</a>
+          </li>
+          <li class="nav-item">
+            <a href="/contact" class:list={['nav-link', currentPath === '/contact' ? 'active' : '']}>Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Header CTA -->
+      <a href="/contact" class="btn btn-primary header-cta">
+        Request a Quote
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+  }
+
+  .site-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--color-text);
+    line-height: 1.2;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+
+  .logo-tagline {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .main-nav {
+      display: block;
+    }
+
+    .nav-list {
+      display: flex;
+      gap: var(--spacing-lg);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      display: inline-block;
+      padding: var(--spacing-sm) 0;
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: var(--font-weight-normal);
+      border-bottom: 2px solid transparent;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary);
+      text-decoration: none;
+      border-bottom-color: transparent;
+    }
+
+    .nav-link.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      font-weight: var(--font-weight-bold);
+    }
+  }
+
+  .header-cta {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 767px) {
+    .header-inner {
+      flex-wrap: wrap;
+    }
+
+    .site-logo {
+      order: 1;
+    }
+
+    .header-cta {
+      order: 3;
+      width: 100%;
+      margin-top: var(--spacing-sm);
+      text-align: center;
+    }
+  }
+</style>

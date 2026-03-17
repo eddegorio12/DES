@@ -1,0 +1,342 @@
+---
+// Contact page - fetches content from JSON file
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABlock from '../components/CTABlock.astro';
+import contactData from '../content/pages/contact.json';
+
+const { title, description, cta } = contactData;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="contact-page">
+    <header class="page-header">
+      <h1>{title}</h1>
+      <p class="subtitle">We're here to help with your EC&I project needs</p>
+    </header>
+
+    <div class="container contact-grid">
+      <!-- Contact Information -->
+      <section class="contact-info">
+        <h2>Get in Touch</h2>
+        <p class="intro">Have a project in mind? Contact us today for a quote or discussion.</p>
+        
+        <div class="contact-methods">
+          <div class="contact-item">
+            <h3>Phone</h3>
+            <p><a href="tel:+85212345678">+852 1234 5678</a></p>
+          </div>
+          
+          <div class="contact-item">
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/85212345678" class="btn btn-secondary btn-sm">Message on WhatsApp</a></p>
+          </div>
+          
+          <div class="contact-item">
+            <h3>Email</h3>
+            <p><a href="mailto:info@des-engineering.com">info@des-engineering.com</a></p>
+          </div>
+          
+          <div class="contact-item">
+            <h3>Office</h3>
+            <p>Hong Kong SAR</p>
+          </div>
+        </div>
+
+        <div class="response-time">
+          <strong>Response Time:</strong> We reply to all inquiries within 1 business day.
+        </div>
+      </section>
+
+      <!-- Contact Form -->
+      <section class="contact-form-section">
+        <h2>Send Your Requirements</h2>
+        <form id="contact-form" class="contact-form" action="/api/contact" method="POST">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required 
+              placeholder="Your name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company *</label>
+            <input 
+              type="text" 
+              id="company" 
+              name="company" 
+              required 
+              placeholder="Company name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required 
+              placeholder="your.email@company.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              required 
+              placeholder="+852 XXXX XXXX"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service Needed *</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service...</option>
+              <option value="cable-tray-installation">Cable Tray Installation</option>
+              <option value="cable-pulling">Cable Pulling</option>
+              <option value="glanding-termination">Glanding and Termination</option>
+              <option value="loop-check">Loop Check / Pre-Commissioning</option>
+              <option value="instrument-calibration">Instrument Configuration / Calibration</option>
+              <option value="inspection">Inspection</option>
+              <option value="operation-support">Operation Support</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="other">Other / Multiple Services</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Project Details *</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="5" 
+              required 
+              placeholder="Tell us about your project requirements, timeline, and any specific needs..."
+            ></textarea>
+          </div>
+
+          <!-- Cloudflare Turnstile will be added here later -->
+          <div class="form-group">
+            <div id="turnstile-widget"></div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-lg">
+              Send Request
+            </button>
+            <span class="form-note">* Required fields</span>
+          </div>
+
+          <div id="form-status" class="form-status" role="alert"></div>
+        </form>
+      </section>
+    </div>
+
+    <CTABlock 
+      title="Need immediate assistance?" 
+      description="Call us directly or reach out on WhatsApp for quick responses."
+      buttonText="Call Now"
+      buttonLink="tel:+85212345678" 
+    />
+  </article>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background-color: var(--color-background-alt);
+    padding: var(--spacing-2xl) 0;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    margin: 0 0 var(--spacing-md);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+    margin-top: var(--spacing-2xl);
+  }
+
+  @media (min-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1.5fr;
+    }
+  }
+
+  .contact-info h2, .contact-form-section h2 {
+    margin-top: 0;
+  }
+
+  .intro {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .contact-methods {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .contact-item {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: var(--color-background-alt);
+    border-radius: 4px;
+  }
+
+  .contact-item h3 {
+    margin: 0 0 var(--spacing-sm);
+    font-size: var(--font-size-h5);
+    color: var(--color-primary);
+  }
+
+  .contact-item p, .contact-item a {
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  .response-time {
+    padding: var(--spacing-md);
+    background-color: var(--color-success-light, #e8f5e9);
+    border-radius: 4px;
+    border-left: 4px solid var(--color-success, #4caf50);
+  }
+
+  .contact-form {
+    background-color: var(--color-background-alt);
+    padding: var(--spacing-xl);
+    border-radius: 4px;
+  }
+
+  .form-group {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    font-family: inherit;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+  }
+
+  .form-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+  }
+
+  .form-status {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: 4px;
+    display: none;
+  }
+
+  .form-status.success {
+    display: block;
+    background-color: var(--color-success-light, #e8f5e9);
+    color: var(--color-success, #2e7d32);
+    border: 1px solid var(--color-success, #4caf50);
+  }
+
+  .form-status.error {
+    display: block;
+    background-color: var(--color-error-light, #ffebee);
+    color: var(--color-error, #c62828);
+    border: 1px solid var(--color-error, #f44336);
+  }
+
+  /* Button sizes */
+  .btn-sm {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      margin-top: var(--spacing-xl);
+    }
+
+    .form-actions {
+      align-items: stretch;
+    }
+
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  // Simple client-side form handling (will be enhanced with Turnstile and fetch)
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        // For now, just show success (will connect to serverless function later)
+        status.textContent = 'Form submission would work here (serverless function not yet implemented)';
+        status.className = 'form-status success';
+
+        // Reset after 5 seconds
+        setTimeout(() => {
+          status.style.display = 'none';
+          form.reset();
+        }, 5000);
+      });
+    }
+  });
+</script>

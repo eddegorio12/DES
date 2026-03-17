@@ -1,0 +1,38 @@
+---
+// Services index page - lists all services from manifest
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import manifest from '../../content/services/manifest.json';
+
+const { title, description, services } = manifest;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="services-page">
+    <header class="page-header">
+      <h1>{title}</h1>
+      <p class="subtitle">{description}</p>
+    </header>
+
+    <div class="container">
+      <section class="services-intro">
+        <p>DES provides professional electrical, control, and instrumentation services to industrial and commercial clients in Hong Kong. Our experienced team delivers reliable solutions from installation through commissioning and ongoing maintenance.</p>
+      </section>
+
+      <section class="services-grid">
+        {services.map((service) => (
+          <div class="service-card">
+            <h3><a href={`/services/${service.id}`}>{service.title}</a></h3>
+            <p>{service.description}</p>
+            <a href={`/services/${service.id}`} class="btn btn-secondary btn-sm">
+              Learn More
+            </a>
+          </div>
+        ))}
+      </section>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  /* ... existing styles remain the same ... */
+</style>

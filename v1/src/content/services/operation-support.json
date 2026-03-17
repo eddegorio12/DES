@@ -1,0 +1,39 @@
+{
+  "title": "Operation Support",
+  "description": "Skilled operation support services for electrical and instrumentation systems in Hong Kong.",
+  "pageHeading": "Operation Support",
+  "overview": "DES provides skilled manpower and operational support for electrical and instrumentation systems. Our experienced technicians support your day-to-day operations, troubleshooting, and maintenance activities.",
+  "scope": [
+    "Electrical system operation support",
+    "Instrumentation system operation",
+    "Shift coverage and technical support",
+    "Troubleshooting and fault finding",
+    "Routine operational checks",
+    "Shift handover and reporting"
+  ],
+  "benefits": [
+    "Access to skilled technical resources",
+    "Flexible support for peak periods",
+    "Reduced downtime",
+    "Experienced troubleshooting",
+    "Consistent operational quality"
+  ],
+  "process": [
+    "Assess support requirements and shift patterns",
+    "Provide qualified personnel",
+    "On-site orientation and briefing",
+    "Execute operational duties",
+    "Regular reporting and feedback"
+  ],
+  "industries": [
+    "Industrial plants",
+    "Utilities",
+    "Manufacturing",
+    "Infrastructure"
+  ],
+  "cta": {
+    "text": "Request Support",
+    "link": "/contact",
+    "description": "Tell us about your operation support needs"
+  }
+}

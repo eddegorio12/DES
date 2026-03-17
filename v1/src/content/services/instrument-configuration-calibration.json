@@ -1,0 +1,40 @@
+{
+  "title": "Instrument Configuration / Calibration",
+  "description": "Professional instrument configuration and calibration services for process instrumentation in Hong Kong.",
+  "pageHeading": "Instrument Configuration / Calibration",
+  "overview": "DES offers expert instrument configuration and calibration services for all types of process instrumentation. Our technicians ensure accurate instrument performance and compliance with calibration standards.",
+  "scope": [
+    "Instrument calibration (pressure, temperature, flow, level)",
+    "Field instrument configuration",
+    "Control valve calibration and stroking",
+    "Safety instrumented system (SIS) testing",
+    "Calibration certificate generation",
+    "Calibration schedule management"
+  ],
+  "benefits": [
+    "Accurate and reliable instrument readings",
+    "Compliance with quality and safety standards",
+    "Extended equipment life",
+    "Reduced process variability",
+    "Traceable calibration records"
+  ],
+  "process": [
+    "Review instrument specifications and procedures",
+    "Prepare calibration equipment and standards",
+    "Execute field calibration or configuration",
+    "Document results and generate certificates",
+    "Tag instruments and update records"
+  ],
+  "industries": [
+    "Oil and gas",
+    "Chemical and petrochemical",
+    "Pharmaceutical",
+    "Food and beverage",
+    "Manufacturing"
+  ],
+  "cta": {
+    "text": "Request a Quote",
+    "link": "/contact",
+    "description": "Tell us about your calibration needs"
+  }
+}

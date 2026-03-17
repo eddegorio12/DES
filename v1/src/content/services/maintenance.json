@@ -1,0 +1,39 @@
+{
+  "title": "Maintenance",
+  "description": "Comprehensive maintenance services for electrical and instrumentation systems in Hong Kong.",
+  "pageHeading": "Maintenance",
+  "overview": "DES provides comprehensive maintenance services for electrical and instrumentation systems. We help you maintain asset reliability, comply with regulations, and minimize downtime through proactive and corrective maintenance.",
+  "scope": [
+    "Preventive maintenance programs",
+    "Corrective maintenance and repairs",
+    "Electrical system maintenance",
+    "Instrumentation maintenance",
+    "Maintenance planning and scheduling",
+    "Spare parts management"
+  ],
+  "benefits": [
+    "Improved system reliability",
+    "Extended equipment life",
+    "Reduced unplanned downtime",
+    "Compliance with maintenance requirements",
+    "Predictable maintenance costs"
+  ],
+  "process": [
+    "Assess asset register and maintenance history",
+    "Develop preventive maintenance plan",
+    "Execute scheduled maintenance tasks",
+    "Record work and update asset history",
+    "Review performance and optimize plan"
+  ],
+  "industries": [
+    "Industrial plants",
+    "Manufacturing",
+    "Utilities",
+    "Commercial facilities"
+  ],
+  "cta": {
+    "text": "Request Maintenance Support",
+    "link": "/contact",
+    "description": "Tell us about your maintenance needs"
+  }
+}

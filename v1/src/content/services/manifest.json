@@ -1,0 +1,46 @@
+{
+  "title": "Services",
+  "description": "DES Engineering Services offers comprehensive EC&I services including cable tray installation, cable pulling, glanding and termination, loop check, calibration, inspection, operation support, and maintenance.",
+  "services": [
+    {
+      "id": "cable-tray-installation",
+      "title": "Cable Tray Installation",
+      "description": "Professional cable tray installation services for industrial and commercial projects in Hong Kong."
+    },
+    {
+      "id": "cable-pulling",
+      "title": "Cable Pulling",
+      "description": "Expert cable pulling services for power, control, and instrumentation cables in Hong Kong."
+    },
+    {
+      "id": "glanding-and-termination",
+      "title": "Glanding and Termination",
+      "description": "Professional cable glanding and termination services for power and instrumentation cables in Hong Kong."
+    },
+    {
+      "id": "loop-check-pre-commissioning",
+      "title": "Loop Check / Pre-Commissioning",
+      "description": "Comprehensive loop check and pre-commissioning services for electrical and instrumentation systems in Hong Kong."
+    },
+    {
+      "id": "instrument-configuration-calibration",
+      "title": "Instrument Configuration / Calibration",
+      "description": "Professional instrument configuration and calibration services for process instrumentation in Hong Kong."
+    },
+    {
+      "id": "inspection",
+      "title": "Inspection",
+      "description": "Comprehensive inspection services for electrical and instrumentation systems in Hong Kong."
+    },
+    {
+      "id": "operation-support",
+      "title": "Operation Support",
+      "description": "Skilled operation support services for electrical and instrumentation systems in Hong Kong."
+    },
+    {
+      "id": "maintenance",
+      "title": "Maintenance",
+      "description": "Comprehensive maintenance services for electrical and instrumentation systems in Hong Kong."
+    }
+  ]
+}
