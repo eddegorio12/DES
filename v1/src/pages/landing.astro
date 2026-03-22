@@ -1,0 +1,958 @@
+---
+// Landing page - Modern, conversion-focused homepage for DES Engineering Services
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABlock from '../components/CTABlock.astro';
+import '../styles/global.css';
+
+const title = 'DES Engineering Services - Professional EC&I Services and Manpower Supply in Hong Kong';
+const description = 'Reliable electrical, control, and instrumentation engineering services and skilled manpower supply for industrial and commercial projects across Hong Kong';
+
+const services = [
+  { title: 'Cable Tray Installation', description: 'Professional installation of cable tray systems for organized and safe cable management', icon: '📦' },
+  { title: 'Cable Pulling', description: 'Efficient cable pulling services for power and control cables', icon: '🌛' },
+  { title: 'Glanding and Termination', description: 'Expert glanding and termination of cables for electrical safety', icon: '⚡' },
+  { title: 'Loop Check / Pre-Commissioning', description: 'Comprehensive loop checking and pre-commissioning services', icon: '⚙️' },
+  { title: 'Instrument Configuration / Calibration', description: 'Precise instrument configuration and calibration services', icon: '🧪' },
+  { title: 'Inspection', description: 'Thorough inspection services for quality assurance', icon: '🔍' },
+  { title: 'Operation Support', description: 'On-site operation support for smooth project execution', icon: '⚙️' },
+  { title: 'Maintenance', description: 'Preventive and corrective maintenance services', icon: '🚨' }
+];
+
+const trustSignals = [
+  { label: 'Registered Company', value: 'DES Engineering Services and Manpower Supply Limited' },
+  { label: 'Years of Experience', value: '10+ years' },
+  { label: 'Safety Commitment', value: 'Strict safety protocols' },
+  { label: 'Quality Assurance', value: 'ISO-compliant processes' },
+  { label: 'Response Time', value: 'Within 1 business day' },
+  { label: 'Industries Served', value: 'Industrial, Commercial, Infrastructure' }
+];
+
+const industries = [
+  { name: 'Manufacturing', icon: '🏭' },
+  { name: 'Construction', icon: '🏗️' },
+  { name: 'Infrastructure', icon: '🌐' },
+  { name: 'Energy', icon: '⚡' },
+  { name: 'Utilities', icon: '🤖' },
+  { name: 'Commercial', icon: '🏢' }
+];
+
+const whyChoose = [
+  { title: 'Experienced Team', description: 'Our engineers and technicians bring deep industry knowledge to every project', icon: '👨‍💻' },
+  { title: 'Flexible Manpower', description: 'We provide skilled resources that match your project scale and timeline', icon: '👥' },
+  { title: 'End-to-End Support', description: 'From installation to commissioning to ongoing maintenance', icon: '🔗' },
+  { title: 'Local Expertise', description: 'We understand the Hong Kong market and project environment intimately', icon: '🇾' }
+];
+
+const contactInfo = {
+  phone: '+852 2345 6789',
+  email: 'info@des.com.hk',
+  address: 'Unit 1001, 10/F, Prosperity Commercial Building, 18-24 Kwai Fuk Road, Kwai Chung, Hong Kong',
+  whatsapp: 'https://wa.me/85223456789',
+  responseTime: 'Within 1 business day'
+};
+
+const ctaData = {
+  title: 'Ready to start your project?',
+  description: 'Contact us today to discuss your EC&I service needs and get a personalized quote.',
+  buttonText: 'Request a Quote',
+  buttonLink: '/contact'
+};
+
+const secondaryCta = {
+  title: 'Need immediate assistance?',
+  description: 'Our team is ready to help with your urgent project requirements.',
+  buttonText: 'Call Now',
+  buttonLink: `tel:${contactInfo.phone.replace(/\s/g, '')}`,
+  buttonIcon: '📞'
+};
+
+const stats = [
+  { label: 'Projects Completed', value: '50+' },
+  { label: 'Happy Clients', value: '100+' },
+  { label: 'Years in Operation', value: '10+' },
+  { label: 'Emergency Response', value: '24/7' }
+];
+
+const aboutContent = {
+  title: 'Professional EC&I Services You Can Trust',
+  description: 'DES Engineering Services is a Hong Kong-based company providing professional electrical, control, and instrumentation (EC&I) services and skilled manpower supply for industrial and commercial projects.',
+  mission: 'To deliver dependable engineering services and skilled manpower that meet the highest standards of safety, quality, and professionalism.',
+  vision: 'To be the trusted EC&I services partner of choice for industrial and commercial projects across the region.'
+};
+
+const featuredServices = [
+  {
+    title: 'Cable Tray Installation',
+    description: 'Professional installation of cable tray systems for organized and safe cable management',
+    icon: '📦',
+    benefits: [
+      'Proper cable support and routing',
+      'Compliance with electrical codes',
+      'Custom configurations for any facility',
+      'Durable and long-lasting installations'
+    ]
+  },
+  {
+    title: 'Loop Check / Pre-Commissioning',
+    description: 'Comprehensive testing and verification of electrical systems before commissioning',
+    icon: '🔍',
+    benefits: [
+      'System functionality testing',
+      'Safety verification',
+      'Documentation and reporting',
+      'Issue resolution'
+    ]
+  },
+  {
+    title: 'Instrument Configuration / Calibration',
+    description: 'Precise calibration and configuration of industrial instruments',
+    icon: '🧪',
+    benefits: [
+      'Temperature sensors',
+      'Pressure transmitters',
+      'Flow meters',
+      'Control systems'
+    ]
+  }
+];
+---
+
+<BaseLayout title={title} description={description} currentPath="/">
+  <article class="landing-page">
+    <!-- Hero Section -->
+    <section class="hero section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Reliable EC&I Engineering Services and Manpower Supply in Hong Kong</h1>
+          <p class="hero-subtitle">DES supports industrial and commercial projects with dependable electrical, control, instrumentation, installation, commissioning, inspection, and maintenance services.</p>
+          
+          <!-- Primary CTAs -->
+          <div class="hero-cta">
+            <a href="/contact" class="btn btn-primary btn-lg">Request a Quote</a>
+            <a href={contactInfo.whatsapp} class="btn btn-secondary btn-lg">WhatsApp Us →</a>
+          </div>
+          
+          <!-- Trust Signals -->
+          <div class="hero-trust">
+            <div class="trust-grid">
+              <div class="trust-item">
+                <strong>{trustSignals[0].value}</strong>
+                <span>{trustSignals[0].label}</span>
+              </div>
+              <div class="trust-item">
+                <strong>{trustSignals[1].value}</strong>
+                <span>{trustSignals[1].label}</span>
+              </div>
+              <div class="trust-item">
+                <strong>{trustSignals[4].value}</strong>
+                <span>{trustSignals[4].label}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Visual Element -->
+        <div class="hero-visual hidden md:block">
+          <div class="visual-placeholder">
+            <div class="visual-content">
+              <div class="visual-icon">🔌</div>
+              <h3>EC&I Services</h3>
+              <p>Industrial-grade solutions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Services -->
+    <section class="featured-services section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Featured Services</h2>
+          <p>Comprehensive EC&I engineering services and manpower supply for industrial and commercial projects</p>
+        </header>
+        
+        <div class="services-grid">
+          {featuredServices.map((service, index) => (
+            <div class="service-card" key={index}>
+              <div class="service-icon">{service.icon}</div>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <div class="service-features">
+                {service.benefits.map((benefit) => (
+                  <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <span>{benefit}</span>
+                  </div>
+                ))}
+              </div>
+              <a href="/services/{service.title.toLowerCase().replace(/\s+/g, '-')}" class="service-link">Learn More →</a>
+            </div>
+          ))}
+        </div>
+        
+        <div class="text-center mt-12">
+          <a href="/services" class="btn btn-secondary">View All Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About DES -->
+    <section class="about-des section-alt">
+      <div class="container">
+        <header class="section-header">
+          <h2>About DES Engineering Services</h2>
+          <p>Professional EC&I services you can trust</p>
+        </header>
+        
+        <div class="about-content">
+          <div class="about-text">
+            <h3 class="about-title">{aboutContent.title}</h3>
+            <p class="about-description">{aboutContent.description}</p>
+            <div class="about-grid">
+              <div class="about-item">
+                <strong>Our Mission</strong>
+                <p>{aboutContent.mission}</p>
+              </div>
+              <div class="about-item">
+                <strong>Our Vision</strong>
+                <p>{aboutContent.vision}</p>
+              </div>
+            </div>
+            <div class="text-center mt-8">
+              <a href="/about" class="btn btn-primary">Learn More About DES</a>
+            </div>
+          </div>
+          <div class="about-visual hidden md:block">
+            <div class="visual-placeholder">
+              <div class="visual-content">
+                <div class="visual-icon">🇾</div>
+                <h3>Hong Kong-Based</h3>
+                <p>Local expertise, global standards</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose DES -->
+    <section class="why-des section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Why Choose DES</h2>
+          <p>Professional, reliable, and safety-focused engineering services you can trust</p>
+        </header>
+        
+        <div class="why-grid">
+          {whyChoose.map((item, index) => (
+            <div class="why-item">
+              <div class="why-icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Industries Served -->
+    <section class="industries section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Industries We Serve</h2>
+          <p>Proven expertise across diverse industrial and commercial sectors</p>
+        </header>
+        
+        <div class="industries-grid">
+          {industries.map((industry, index) => (
+            <div class="industry-card">
+              <div class="industry-icon">{industry.icon}</div>
+              <h3>{industry.name}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust & Reliability -->
+    <section class="trust-section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <h2>Trust & Reliability</h2>
+          <p>Our commitment to quality and safety ensures successful project delivery</p>
+        </header>
+        
+        <div class="trust-grid">
+          {trustSignals.map((signal, index) => (
+            <div class="trust-item">
+              <strong>{signal.value}</strong>
+              <span>{signal.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats & Credibility -->
+    <section class="stats-section section">
+      <div class="container">
+        <div class="stats-grid">
+          {stats.map((stat, index) => (
+            <div class="stat-card">
+              <div class="stat-number">{stat.value}</div>
+              <div class="stat-label">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTAs -->
+    <section class="contact-cta section">
+      <div class="container">
+        <!-- Primary CTA -->
+        <CTABlock 
+          title={ctaData.title}
+          description={ctaData.description}
+          buttonText={ctaData.buttonText}
+          buttonLink={ctaData.buttonLink}
+        />
+        
+        <!-- Secondary CTA -->
+        <div class="secondary-cta">
+          <div class="container-narrow">
+            <div class="secondary-content">
+              <h3>{secondaryCta.title}</h3>
+              <p>{secondaryCta.description}</p>
+              <a href={secondaryCta.buttonLink} class="btn btn-primary btn-lg">
+                {secondaryCta.buttonIcon} {secondaryCta.buttonText}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info section-alt">
+      <div class="container">
+        <div class="contact-content">
+          <h2>Get in Touch</h2>
+          <div class="contact-details">
+            <div class="contact-item">
+              <strong>Phone</strong>
+              <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}>{contactInfo.phone}</a>
+            </div>
+            <div class="contact-item">
+              <strong>Email</strong>
+              <a href="mailto:{contactInfo.email}">{contactInfo.email}</a>
+            </div>
+            <div class="contact-item">
+              <strong>Address</strong>
+              <span>{contactInfo.address}</span>
+            </div>
+            <div class="contact-item">
+              <strong>Response Time</strong>
+              <span>{contactInfo.responseTime}</span>
+            </div>
+          </div>
+          
+          <div class="text-center mt-8">
+            <a href="/contact" class="btn btn-primary btn-lg">Contact Us →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-background) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e6f0ff' fill-opacity='0.3'%3E%3Cpath d='M36 36c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-14c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4zM24 36c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-14c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4zM12 36c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-14c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-4xl);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.25rem, 5vw, 3rem);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .hero-cta {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .hero-trust {
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .trust-item {
+    text-align: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+  }
+  
+  .trust-item strong {
+    display: block;
+    font-weight: var(--font-weight-black);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .trust-item span {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+  
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .visual-placeholder {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+    border-radius: var(--border-radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .visual-content {
+    text-align: center;
+    color: white;
+  }
+  
+  .visual-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .visual-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .visual-content p {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .section-header h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+  }
+  
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Featured Services */
+  .featured-services {
+    background: var(--color-background-alt);
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .service-card {
+    background: var(--color-background-card);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-xl);
+    text-align: center;
+    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+  }
+  
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+  }
+  
+  .service-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .service-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .service-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+  }
+  
+  .service-card p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+  }
+  
+  .service-features {
+    margin-bottom: var(--spacing-lg);
+    text-align: left;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .feature-icon {
+    margin-right: var(--spacing-sm);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .service-link {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .service-link:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+
+  /* About DES */
+  .about-des {
+    background: var(--color-background);
+  }
+  
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-4xl);
+    align-items: center;
+  }
+  
+  .about-title {
+    font-size: clamp(1.875rem, 4vw, 2.25rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+  }
+  
+  .about-description {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .about-item {
+    padding: var(--spacing-lg);
+    background: var(--color-background-alt);
+    border-radius: var(--border-radius-lg);
+    border-left: 4px solid var(--color-primary);
+  }
+  
+  .about-item strong {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .about-item p {
+    color: var(--color-text-light);
+    margin: 0;
+  }
+  
+  .about-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .about-visual .visual-placeholder {
+    width: 250px;
+    height: 250px;
+  }
+
+  /* Why Choose DES */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+  }
+  
+  .why-item {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-background-card);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-base);
+  }
+  
+  .why-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+  
+  .why-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .why-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+  }
+  
+  .why-item p {
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  /* Industries */
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-xl);
+  }
+  
+  .industry-card {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: var(--color-background-card);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-base);
+  }
+  
+  .industry-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+  
+  .industry-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .industry-card h3 {
+    font-size: 1rem;
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+  }
+
+  /* Trust Section */
+  .trust-section {
+    background: var(--color-background-alt);
+  }
+  
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+  }
+  
+  .trust-item {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-background-card);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-base);
+  }
+  
+  .trust-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+  
+  .trust-item strong {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-black);
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+  }
+  
+  .trust-item span {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  /* Stats Section */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+  }
+  
+  .stat-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-background-alt);
+    border-radius: var(--border-radius-xl);
+    transition: all var(--transition-base);
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-black);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .stat-label {
+    color: var(--color-text-light);
+    font-size: 1rem;
+  }
+
+  /* Contact CTAs */
+  .contact-cta {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-background) 100%);
+  }
+  
+  .secondary-cta {
+    margin-top: var(--spacing-4xl);
+  }
+  
+  .secondary-content {
+    text-align: center;
+    padding: var(--spacing-3xl) var(--spacing-xl);
+    background: var(--color-background-card);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid var(--color-border-light);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .secondary-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 102, 204, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+  
+  .secondary-content:hover::before {
+    opacity: 1;
+  }
+
+  /* Contact Information */
+  .contact-info {
+    background: var(--color-background-alt);
+  }
+  
+  .contact-content {
+    text-align: center;
+  }
+  
+  .contact-content h2 {
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .contact-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .contact-item {
+    padding: var(--spacing-xl);
+    background: var(--color-background-card);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-base);
+  }
+  
+  .contact-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+  
+  .contact-item strong {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+  }
+  
+  .contact-item a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+  }
+  
+  .contact-item a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+    
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero-cta .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .services-grid,
+    .why-grid,
+    .trust-grid,
+    .industries-grid {
+      gap: var(--spacing-lg);
+    }
+    
+    .service-card,
+    .why-item,
+    .industry-card,
+    .trust-item,
+    .contact-item {
+      padding: var(--spacing-lg);
+    }
+    
+    .visual-placeholder {
+      width: 200px;
+      height: 200px;
+    }
+    
+    .visual-icon {
+      font-size: 2.5rem;
+    }
+    
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+    
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-cta {
+      gap: var(--spacing-sm);
+    }
+    
+    .hero-cta .btn {
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: 1rem;
+    }
+  }
+</style>
